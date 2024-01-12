@@ -33,7 +33,10 @@ comments.post("/:postId", (req, res) => {
     })
   );
 
-  res.status(201).json({});
+  // return back all comment with assosiated post/postid
+  res
+    .status(201)
+    .json(selectAllCommentByPostId(req.params.postId)(store.getState()));
 });
 
 export default comments;
